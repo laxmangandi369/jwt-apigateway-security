@@ -17,6 +17,7 @@ public class SwiggyAppController {
 
     @GetMapping("/home")
     public String greetingMessage() {
+        System.out.println("github testing");
         return service.greeting();
     }
 
