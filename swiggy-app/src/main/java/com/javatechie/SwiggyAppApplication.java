@@ -10,6 +10,7 @@ public class SwiggyAppApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SwiggyAppApplication.class, args);
+		System.out.println("test on github for dev");
 	}
 
 }
