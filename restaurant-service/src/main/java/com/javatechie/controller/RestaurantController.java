@@ -17,6 +17,8 @@ public class RestaurantController {
 
     @GetMapping
     public String greetingMessage() {
+        System.out.println("testing giturl public repo");
+        System.out.println("testing giturl public repo");
         return service.greeting();
     }
 
