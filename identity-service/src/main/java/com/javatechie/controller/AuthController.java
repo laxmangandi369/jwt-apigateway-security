@@ -20,6 +20,8 @@ public class AuthController {
 
     @PostMapping("/register")
     public String addNewUser(@RequestBody UserCredential user) {
+        Authentication authenticate = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));
+        System.out.println("Hello World");
         return service.saveUser(user);
     }
 
@@ -27,15 +29,20 @@ public class AuthController {
     public String getToken(@RequestBody AuthRequest authRequest) {
         Authentication authenticate = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));
         if (authenticate.isAuthenticated()) {
+            System.out.println("Hello World");
             return service.generateToken(authRequest.getUsername());
         } else {
+            Authentication authenticate = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));
+            System.out.println("Hello World");
             throw new RuntimeException("invalid access");
         }
     }
 
     @GetMapping("/validate")
     public String validateToken(@RequestParam("token") String token) {
+        Authentication authenticate = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));
         service.validateToken(token);
+        System.out.println("Hello World");
         return "Token is valid";
     }
 }
